@@ -10,7 +10,9 @@ const verifyToken = async (req, res, next) => {
     req.headers.authorization && req.headers.authorization.startsWith("Bearer");
 
   if (!token) {
-    return res.status(403).send("A token is required for authentication");
+    return res
+      .status(403)
+      .json({ message: "A token is required for authentication", error: true });
   }
   try {
     token = req.headers.authorization.split(" ")[1];
@@ -19,7 +21,7 @@ const verifyToken = async (req, res, next) => {
     req.user = await User.findById(decoded.user_id).select("-password");
     next();
   } catch (err) {
-    return res.status(401).send("Invalid Token");
+    return res.status(401).json({ message: "Invalid Token", error: true });
   }
   return next();
 };
