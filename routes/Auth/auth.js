@@ -8,7 +8,6 @@ router.post("/login", async (req, res) => {
   try {
     // Get user input
     const { username, password } = req.body;
-    console.log(username);
 
     // Validate user input
     if (!(username && password)) {
