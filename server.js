@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const { Server } = require("socket.io");
 const authRoutes = require("./routes/Auth/auth.js");
 const connectToMongoDb = require("./utils/dbConnection.js");
+const Protect = require("./middleware/Protect.js");
 
 // ENV
 dotenv.config();

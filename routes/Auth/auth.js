@@ -28,10 +28,11 @@ router.post("/login", async (req, res) => {
       );
 
       // save user token
-      user.token = token;
+      response = { ...user._doc, token };
+      console.log(token);
 
       // user
-      return res.status(200).json(user);
+      return res.status(200).json(response);
     }
     return res.status(400).send("Invalid Credentials");
   } catch (err) {
