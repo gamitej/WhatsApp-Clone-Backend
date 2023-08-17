@@ -28,7 +28,7 @@ app.use(helmet());
 app.use(morgan("common"));
 
 // ROUTES
-app.use("/api/auth", authRoutes);
+app.use("/api/v1", authRoutes);
 
 server.listen(PORT, () => {
   console.log("listening on port " + PORT);
