@@ -8,6 +8,7 @@ const { Server } = require("socket.io");
 const authRoutes = require("./routes/Auth/auth.js");
 const connectToMongoDb = require("./utils/dbConnection.js");
 const Protect = require("./middleware/Protect.js");
+const { SocketConnection } = require("./socket.js");
 
 // ENV
 dotenv.config();
@@ -17,8 +18,13 @@ const MONGO_URL = process.env.MONGO_URL;
 // CONFIGURATION
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173",
+  },
+});
 
+SocketConnection(io);
 connectToMongoDb(MONGO_URL);
 
 // MIDDLEWARE
