@@ -2,13 +2,6 @@ const Chat = require("../../modals/Chat");
 
 const router = require("express").Router();
 
-router.get("/chats", async (req, res) => {
-  try {
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
 // create chat
 router.post("/create", async (req, res) => {
   try {
@@ -40,6 +33,11 @@ router.post("/create", async (req, res) => {
 router.get("/user/:id", async (req, res) => {
   try {
     const userId = req.params.id;
+
+    if (!userId)
+      return res
+        .status(400)
+        .json({ message: "Userid is required", error: true });
 
     const chat = await Chat.find({ members: { $in: [userId] } });
     if (chat.length > 0) return res.status(200).json(chat);
