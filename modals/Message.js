@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const MessageSchema = new Schema(
+const MessageSchema = new mongoose.Schema(
   {
-    chat: {
+    chatId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Chat",
     },

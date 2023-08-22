@@ -6,6 +6,9 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const { Server } = require("socket.io");
 const authRoutes = require("./routes/Auth/auth.js");
+const chatRoutes = require("./routes/Chat/chat.js");
+const messageRoutes = require("./routes/Chat/Message.js");
+
 const connectToMongoDb = require("./utils/dbConnection.js");
 const Protect = require("./middleware/Protect.js");
 const { SocketConnection } = require("./socket.js");
@@ -35,6 +38,8 @@ app.use(morgan("common"));
 
 // ROUTES
 app.use("/api/v1", authRoutes);
+app.use("/api/v1/chat", chatRoutes);
+app.use("/api/v1/message", messageRoutes);
 
 server.listen(PORT, () => {
   console.log("listening on port " + PORT);
