@@ -2,10 +2,10 @@ const User = require("../../modals/User");
 
 const router = require("express").Router();
 
-// get image
-router.get("/profile-pic/:id", async (req, res) => {
+// get image - /profile?userId=<userId>
+router.get("/profile-pic", async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.query.userId;
     const user = await User.findById(userId);
     if (!user)
       return res.status(404).json({ message: "User not found", error: true });

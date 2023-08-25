@@ -29,15 +29,15 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// find particular user chat
-router.get("/user/:id", async (req, res) => {
+// find particular user chat - /user?userId=<userId>
+router.get("/user", async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.query.userId;
 
     if (!userId)
       return res
         .status(400)
-        .json({ message: "Userid is required", error: true });
+        .json({ message: "User-Id is required", error: true });
 
     const chat = await Chat.find({ members: { $in: [userId] } });
     if (chat.length > 0) return res.status(200).json(chat);
