@@ -8,6 +8,7 @@ const { Server } = require("socket.io");
 const authRoutes = require("./routes/Auth/auth.js");
 const chatRoutes = require("./routes/Chat/chat.js");
 const messageRoutes = require("./routes/Chat/Message.js");
+const updateRoutes = require("./routes/Chat/update.js");
 
 const connectToMongoDb = require("./utils/dbConnection.js");
 const Protect = require("./middleware/Protect.js");
@@ -41,6 +42,7 @@ app.use(morgan("common"));
 app.use("/api/v1", authRoutes);
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/message", messageRoutes);
+app.use("/api/v1/update", updateRoutes);
 
 server.listen(PORT, () => {
   console.log("listening on port " + PORT);
