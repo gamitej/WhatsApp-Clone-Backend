@@ -32,6 +32,15 @@ function SocketConnection(io) {
       socket.to(data.roomId).emit("received-chat-message", data);
     });
 
+    socket.on("typing", (data) => {
+      console.log(data, "jiosdsd");
+      socket.to(data.roomId).emit("userTyping", data);
+    });
+
+    socket.on("stop typing", (data) => {
+      socket.to(data.roomId).emit("userStoppedTyping", data);
+    });
+
     socket.on("disconnect", () => {
       console.log("user disconnected " + socket.id);
     });
