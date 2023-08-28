@@ -23,20 +23,19 @@ function SocketConnection(io) {
     // joined chat
     socket.on("join-chat", (data) => {
       socket.join(data.roomId);
-      //   console.log(data);
     });
 
-    // sent message to chat
+    // sent & receive  message
     socket.on("send-chat-message", (data) => {
-      //   console.log(data);
       socket.to(data.roomId).emit("received-chat-message", data);
     });
 
+    // typing indicator
     socket.on("typing", (data) => {
-      console.log(data, "jiosdsd");
       socket.to(data.roomId).emit("userTyping", data);
     });
 
+    // stop-typing indicator
     socket.on("stop typing", (data) => {
       socket.to(data.roomId).emit("userStoppedTyping", data);
     });
