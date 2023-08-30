@@ -9,8 +9,8 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const { Server } = require("socket.io");
 const authRoutes = require("./routes/auth.js");
 const chatRoutes = require("./routes/chat.js");
-const messageRoutes = require("./routes/Message.js");
-const updateRoutes = require("./routes/update.js");
+const messageRoutes = require("./routes/message.js");
+const userRoutes = require("./routes/user.js");
 
 // Define Swagger options
 const swaggerOptions = {
@@ -20,14 +20,13 @@ const swaggerOptions = {
       title: "WhatsApp Clone API",
       version: "1.0.0",
       description: "My API documentation @Rooney",
-      
     },
   },
   apis: [
     "./routes/auth.js",
     "./routes/chat.js",
-    "./routes/Message.js",
-    "./routes/update.js",
+    "./routes/message.js",
+    "./routes/user.js",
   ],
 };
 
@@ -68,7 +67,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/v1", authRoutes);
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/message", messageRoutes);
-app.use("/api/v1/update", updateRoutes);
+app.use("/api/v1/update", userRoutes);
 
 server.listen(PORT, () => {
   console.log("listening on port " + PORT);
