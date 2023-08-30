@@ -1,7 +1,32 @@
 const router = require("express").Router();
 const { createChat, userChat } = require("../controller/chat.controller");
 
-// create chat
+/**
+ * @swagger
+ * /api/v1/chat/create:
+ *   post:
+ *     summary: Create a new chat
+ *     tags: [Chats]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               firstId:
+ *                 type: string
+ *               secondId:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Successfully created a new chat or retrieved existing chat
+ *       404:
+ *         description: Both user IDs are required or chat not found
+ *       500:
+ *         description: Internal server error
+ */
+
 router.post("/create", createChat);
 
 /**
