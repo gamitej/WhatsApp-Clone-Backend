@@ -12,14 +12,14 @@ const chatRoutes = require("./routes/chat.js");
 const messageRoutes = require("./routes/message.js");
 const userRoutes = require("./routes/user.js");
 
-// Define Swagger options
+// ======= SWAGGER OPTIONS START =======
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
     info: {
       title: "WhatsApp Clone API",
       version: "1.0.0",
-      description: "My API documentation @Rooney",
+      description: "My WhatsApp API documentation",
     },
   },
   apis: [
@@ -31,6 +31,8 @@ const swaggerOptions = {
 };
 
 const swaggerSpec = swaggerJsDoc(swaggerOptions);
+
+// ======= SWAGGER OPTIONS END =======
 
 const connectToMongoDb = require("./utils/dbConnection.js");
 const Protect = require("./middleware/Protect.js");
