@@ -1,38 +1,13 @@
-const User = require("../modals/User");
-
 const router = require("express").Router();
+const {
+  uploadProfilePicture,
+  getProfilePic,
+} = require("../controller/user.controller");
 
-// get image - /profile?userId=<userId>
-router.get("/profile-pic", async (req, res) => {
-  try {
-    const userId = req.query.userId;
-    const user = await User.findById(userId);
-    if (!user)
-      return res.status(404).json({ message: "User not found", error: true });
-    return res.status(200).json({ imgUrl: user.profilePic, error: false });
-  } catch (error) {
-    res.status(404).json({ message: "Something went wrong", error: true });
-  }
-});
 
-// upload image
-router.post("/upload-profile-pic", async (req, res) => {
-  try {
-    const { userId, profilePicUrl } = req.body;
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { profilePic: profilePicUrl },
-      { new: true }
-    );
+router.get("/profile-pic", getProfilePic);
 
-    if (!user)
-      return res.status(404).json({ message: "User not found", error: true });
-    return res
-      .status(200)
-      .json({ message: "Profile picture updated successfully", error: false });
-  } catch (error) {
-    res.status(404).json({ message: "Something went wrong", error: true });
-  }
-});
+
+router.post("/upload-profile-pic", uploadProfilePicture);
 
 module.exports = router;
