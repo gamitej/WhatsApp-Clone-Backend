@@ -31,6 +31,13 @@ const Message = require("../modals/Message");
  *                 type: string
  *               message:
  *                 type: string
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: JWT token (Bearer token)
  *     responses:
  *       200:
  *         description: Successfully created a new message
@@ -55,6 +62,12 @@ router.post("/create", createMessage);
  *         schema:
  *           type: string
  *         description: ID of the chat to retrieve messages from
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: JWT token (Bearer token)
  *     responses:
  *       200:
  *         description: Successfully retrieved messages

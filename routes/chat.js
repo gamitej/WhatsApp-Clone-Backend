@@ -18,6 +18,13 @@ const { createChat, userChat } = require("../controller/chat.controller");
  *                 type: string
  *               secondId:
  *                 type: string
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: JWT token (Bearer token)
  *     responses:
  *       200:
  *         description: Successfully created a new chat or retrieved existing chat
@@ -42,6 +49,12 @@ router.post("/create", createChat);
  *         schema:
  *           type: string
  *         description: ID of the user to find chats for
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: JWT token (Bearer token)
  *     responses:
  *       200:
  *         description: Successfully retrieved chats
