@@ -19,7 +19,7 @@ const swaggerOptions = {
     info: {
       title: "WhatsApp Clone API",
       version: "1.0.0",
-      description: "My WhatsApp API documentation",
+      description: "WhatsApp Clone API documentation",
     },
   },
   apis: [
