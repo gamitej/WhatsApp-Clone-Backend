@@ -21,3 +21,5 @@ npm run dev
 ```
 
 ### Swagger Api-Doc [Link](http://localhost:3000/api-docs/#/)
+
+This link will be available when server is running
