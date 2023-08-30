@@ -6,7 +6,7 @@ const {
 
 /**
  * @swagger
- * /api/v1/profile-pic:
+ * /api/v1/user/profile-pic:
  *   get:
  *     summary: Get user's profile picture URL
  *     tags: [User]
@@ -38,7 +38,7 @@ router.get("/profile-pic", getProfilePic);
 
 /**
  * @swagger
- * /api/v1/upload-profile-pic:
+ * /api/v1/user/upload-profile-pic:
  *   post:
  *     summary: Upload and update user's profile picture
  *     tags: [User]

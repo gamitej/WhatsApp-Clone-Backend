@@ -67,7 +67,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/v1", authRoutes);
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/message", messageRoutes);
-app.use("/api/v1/update", userRoutes);
+app.use("/api/v1/user", userRoutes);
 
 server.listen(PORT, () => {
   console.log("listening on port " + PORT);

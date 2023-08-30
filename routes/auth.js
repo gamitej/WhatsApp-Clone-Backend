@@ -3,7 +3,7 @@ const { userLogin, registerUser } = require("../controller/auth.controller");
 
 /**
  * @swagger
- * /api/v1/auth/login:
+ * /api/v1/login:
  *   post:
  *     summary: User login
  *     tags: [Authentication]
@@ -33,7 +33,7 @@ router.post("/login", userLogin);
 
 /**
  * @swagger
- * /api/v1/auth/register:
+ * /api/v1/register:
  *   post:
  *     summary: Register a new user
  *     tags: [Authentication]
