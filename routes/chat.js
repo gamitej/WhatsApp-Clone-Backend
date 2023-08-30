@@ -1,33 +1,8 @@
-const Chat = require("../modals/Chat");
-
 const router = require("express").Router();
+const { createChat } = require("../controller/chat.controller");
 
 // create chat
-router.post("/create", async (req, res) => {
-  try {
-    const { firstId, secondId } = req.body;
-
-    if (!firstId && !secondId)
-      return res
-        .status(404)
-        .json({ message: "Please provide both id's", error: true });
-
-    const chat = await Chat.findOne({
-      members: { $all: [firstId, secondId] },
-    });
-
-    if (chat) return res.status(200).json(chat);
-
-    const creatNewChat = new Chat({
-      members: [firstId, secondId],
-    });
-
-    const response = await creatNewChat.save();
-    return res.status(200).json(response);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
+router.post("/create", createChat);
 
 // find particular user chat - /user?userId=<userId>
 router.get("/user", async (req, res) => {
