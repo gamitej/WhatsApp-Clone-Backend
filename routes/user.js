@@ -17,9 +17,17 @@ const {
  *         schema:
  *           type: string
  *         description: ID of the user to retrieve profile picture URL for
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: JWT token (Bearer token)
  *     responses:
  *       200:
  *         description: Successfully retrieved user's profile picture URL
+ *       401:
+ *         description: Unauthorized (JWT token missing or invalid)
  *       404:
  *         description: User not found
  *       500:
@@ -45,9 +53,18 @@ router.get("/profile-pic", getProfilePic);
  *                 type: string
  *               profilePicUrl:
  *                 type: string
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: JWT token (Bearer token)
  *     responses:
  *       200:
  *         description: Successfully updated user's profile picture
+ *       401:
+ *         description: Unauthorized (JWT token missing or invalid)
  *       404:
  *         description: User not found
  *       500:
