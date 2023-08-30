@@ -23,6 +23,7 @@ function SocketConnection(io) {
     // joined chat
     socket.on("join-chat", (data) => {
       socket.join(data.roomId);
+      console.log(`Connected to ${socket.id}`);
     });
 
     // sent & receive  message
@@ -41,7 +42,7 @@ function SocketConnection(io) {
     });
 
     socket.on("disconnect", () => {
-      console.log("user disconnected " + socket.id);
+      console.log("Disconnected to" + socket.id);
     });
     // end
   });

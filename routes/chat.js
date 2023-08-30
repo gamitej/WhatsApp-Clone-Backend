@@ -1,4 +1,4 @@
-const Chat = require("../../modals/Chat");
+const Chat = require("../modals/Chat");
 
 const router = require("express").Router();
 

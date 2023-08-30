@@ -1,7 +1,6 @@
-const router = require("express").Router();
-const Message = require("../../modals/Message");
+const Message = require("../modals/Message");
 
-router.post("/create", async (req, res) => {
+const createMessage = async (req, res) => {
   try {
     const { chatId, senderId, message } = req.body;
 
@@ -17,9 +16,9 @@ router.post("/create", async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-});
+};
 
-router.get("/:chatId", async (req, res) => {
+const getMessageById = async (req, res) => {
   try {
     const { chatId } = req.params;
 
@@ -30,6 +29,6 @@ router.get("/:chatId", async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-});
+};
 
-module.exports = router;
+module.exports = { createMessage, getMessageById };

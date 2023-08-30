@@ -4,11 +4,34 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 const { Server } = require("socket.io");
-const authRoutes = require("./routes/Auth/auth.js");
-const chatRoutes = require("./routes/Chat/chat.js");
-const messageRoutes = require("./routes/Chat/Message.js");
-const updateRoutes = require("./routes/Chat/update.js");
+const authRoutes = require("./routes/auth.js");
+const chatRoutes = require("./routes/chat.js");
+const messageRoutes = require("./routes/Message.js");
+const updateRoutes = require("./routes/update.js");
+
+// Define Swagger options
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "WhatsApp Clone API",
+      version: "1.0.0",
+      description: "My API documentation @Rooney",
+      
+    },
+  },
+  apis: [
+    "./routes/auth.js",
+    "./routes/chat.js",
+    "./routes/Message.js",
+    "./routes/update.js",
+  ],
+};
+
+const swaggerSpec = swaggerJsDoc(swaggerOptions);
 
 const connectToMongoDb = require("./utils/dbConnection.js");
 const Protect = require("./middleware/Protect.js");
@@ -37,6 +60,9 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("common"));
+
+// Serve Swagger UI at /api-docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // ROUTES
 app.use("/api/v1", authRoutes);

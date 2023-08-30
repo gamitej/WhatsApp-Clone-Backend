@@ -1,4 +1,4 @@
-const User = require("../../modals/User");
+const User = require("../modals/User");
 
 const router = require("express").Router();
 

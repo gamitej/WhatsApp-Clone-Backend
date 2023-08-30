@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
-const User = require("../../modals/User");
-const { EncodeData, CompareEncodedData } = require("../../utils/hashFunc");
+const User = require("../modals/User");
+const { EncodeData, CompareEncodedData } = require("../utils/hashFunc");
 
 // ================= LOGIN ===================
 router.post("/login", async (req, res) => {
