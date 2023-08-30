@@ -1,6 +1,6 @@
 ## WhatsApp Clone Backend Server
 
-## Swagger Dodc [Link](http://localhost:3000/api-docs/#/)
+## Swagger Api-Doc [Link](http://localhost:3000/api-docs/#/)
 
 ## Libs
 
